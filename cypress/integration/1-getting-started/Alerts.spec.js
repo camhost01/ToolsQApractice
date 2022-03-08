@@ -4,51 +4,47 @@ import 'cypress-iframe'
 
 const { delay } = require("bluebird")
 
-//const { find } = require("cypress/types/lodash")
-
 describe('ToolsQa Practice Alerts', function(){
     beforeEach(function(){
-        cy.log("Antes de ejecutar el caso de prueba")
-        //para el caso de iframe
+        cy.log("Before start test case")
+        //If you want to check the Iframe test case need to remove the comments for next line and comment cy.visit('https://demoqa.com/alertsWindows')
+        //also remove /* */ from Iframe interaction test case
         //cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
         cy.visit('https://demoqa.com/alertsWindows')
     })
 
     it('Alerts interaction', function(){
-        //click en panel de lado izquierdo
+        //select menu from left panel
         cy.get('.text',{timeout:200}).contains('Alerts').click()
-        //Click en boton de Alerta
+        //Click on Alert button
         cy.get('#alertButton').click()  
         cy.get('#confirmButton').click() 
-        /*Cypress auto acepta las alertas, para validar por ejemplo el texto dentro de la alerta se debe hacer uso 
-        de los eventos del navegador, para alertas window:alert, para botones de confirmar window:confirm
+        /*Cypress auto-accept alerts, if you need to validate a specific text from alert, need to use the event listener
+         window:alert, confirm form window:confirm
         */
         cy.on('window:alert',(str)=>
        {
-           //Valor que se que aparece en el alert vs valor que se guarda en "str"
+           //Text in alert is compare againts the value on object str
            expect(str).to.equal('You clicked a button')
        })
        //Window confirm ejemplo
        cy.on('window:confirm',(str)=>
        {
-           //Valor que se que aparece en el alert vs valor que se guarda en "str"
+           //Text in confirm form is compare againts the value on object str
            expect(str).to.equal('Do you confirm action?')
        })
         /*
-        Al colocar estos dos comandos al mismo tiempo solo ejecuta el primero de manera correcta, posteriormente no tiene en cuenta ni el nuevo click ni 
-        el tiempo de 6 segundos, realiza la validación inmediatamente
-       //Boton se oprime y accion 5 segundos después
-       cy.get('#timerAlertButton').click()
-       cy.wait(6000)
-       cy.on('window:alert',(str)=>
+        If you need to wait after click in the button e.g. 5 sec
+        cy.get('#timerAlertButton').click()
+        cy.wait(6000)
+        cy.on('window:alert',(str)=>
         {
-            //Valor que se que aparece en el alert vs valor que se guarda en "str"
             expect(str).to.equal('This alert appeared after 5 seconds')
         })
        */
     })
     it('Windows interaction', function(){
-        //click en panel de lado izquierdo
+        //select menu from left panel
         cy.get('.text',{timeout:200}).contains('Browser Windows').click()
         //Click en boton nueva página
         /*

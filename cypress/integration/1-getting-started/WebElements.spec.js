@@ -4,7 +4,7 @@
 
 describe('ToolsQa Practice WebElements', function(){
     beforeEach(function(){
-        cy.log("Antes de ejecutar el caso de prueba")
+        cy.log("Before start test case")
         cy.visit('https://demoqa.com/elements')
     })
     it('TextBox interaction', function(){
@@ -34,20 +34,20 @@ describe('ToolsQa Practice WebElements', function(){
         cy.get('.products').find('.product').eq(2).contains('ADD TO CART').click()*/     
     })
     it('CheckBox interaction', function(){
-        //Selecciona la sección del panel izquierdo
+        //select menu from left panel
         cy.get('#item-1').click()
-        //Expande el menú de opciones
+        //Expand menu options
         cy.get('.rct-icon-expand-close').click()
-        //Selecciona el segundo elemento, cuando no se tiene forma de diferenciar al elemento
-        //se agrega entre llaves el elemeto que se repite y con eq() se le dice a cual objeto hacerle click
+        //select second element, when the element it's repetitive you need to add them with []
+        // and with the eq() you mention wich repetitive element need to interact
         cy.get('[class=rct-checkbox]').eq(2).click()
 
 
     })
     it('Radiobutton interaction', function(){
-        //Selecciona la sección del panel izquierdo
+        //select menu from left panel
         cy.get('#item-2').click()
-        //Selecciona el radiobtt Yes
+        //Radio button: Yes
         cy.get('label[for="yesRadio"]').click()
         cy.get('.text-success').should('be.visible').contains('Yes')
         cy.get('label[for="impressiveRadio"]').click()
@@ -55,9 +55,9 @@ describe('ToolsQa Practice WebElements', function(){
         
     })
     it('WebTables interaction', function(){
-        //Selecciona la sección del panel izquierdo
+        //select menu from left panel
         cy.get('#item-3').click()
-        //Editando registro
+        //editing record
         cy.get('#edit-record-1').click()
         cy.get('#registration-form-modal', { timeout: 500}).should('be.visible').contains('Registration Form')
         cy.get('#firstName').clear().type('Yoguisito')
@@ -66,7 +66,7 @@ describe('ToolsQa Practice WebElements', function(){
         cy.get('#salary').clear().type('200000')
         cy.get('#submit').click()
         cy.get('[class=rt-td]').first().contains('Yoguisito')
-        //Agregando Registro nuevo
+        //adding new record
         cy.get('#addNewRecordButton').click()
         cy.get('#registration-form-modal', { timeout: 5000}).should('be.visible').contains('Registration Form')
         cy.get('#firstName').clear().type('Voncha')
@@ -77,14 +77,13 @@ describe('ToolsQa Practice WebElements', function(){
         cy.get('#department').clear().type('Security')
         cy.get('#submit').click()
         cy.get(':nth-child(4) > .rt-tr > :nth-child(1)').contains('Voncha')
-        //Buscando Registro
+        //search a record
         cy.get('#searchBox').type('Fuentes')
     
     })
     it('Buttons interaction', function(){
-        //Selecciona la sección del panel izquierdo
+        //select menu from left panel
         cy.get('#item-4').click()
-        //Selecciona el radiobtt Yes
         cy.get('#doubleClickBtn').dblclick()
         cy.get('#doubleClickMessage').should('be.visible').contains('You have done a double click')
         cy.get('#rightClickBtn').rightclick()
