@@ -1,8 +1,10 @@
 /// <reference types="Cypress" /> 
 /// <reference types="cypress-iframe" /> 
 import 'cypress-iframe'
+import AlertHomePage from './pageObj/AlertHomePage'
 
 const { delay } = require("bluebird")
+var alertHP = new AlertHomePage()
 
 describe('ToolsQa Practice Alerts', function(){
     beforeEach(function(){
@@ -10,15 +12,20 @@ describe('ToolsQa Practice Alerts', function(){
         //If you want to check the Iframe test case need to remove the comments for next line and comment cy.visit('https://demoqa.com/alertsWindows')
         //also remove /* */ from Iframe interaction test case
         //cy.visit('https://rahulshettyacademy.com/AutomationPractice/')
+        cy.fixture('example').then(function(data)
+        {
+            this.data=data
+        })
         cy.visit('https://demoqa.com/alertsWindows')
     })
 
     it('Alerts interaction', function(){
         //select menu from left panel
-        cy.get('.text',{timeout:200}).contains('Alerts').click()
+        alertHP.getLeftoptionAlerts().click()
         //Click on Alert button
-        cy.get('#alertButton').click()  
-        cy.get('#confirmButton').click() 
+        alertHP.getAlertbutton.click()  
+        //Click on Confirm button
+        alertHP.getConfirmbutton.click() 
         /*Cypress auto-accept alerts, if you need to validate a specific text from alert, need to use the event listener
          window:alert, confirm form window:confirm
         */
@@ -45,7 +52,7 @@ describe('ToolsQa Practice Alerts', function(){
     })
     it('Windows interaction', function(){
         //select menu from left panel
-        cy.get('.text',{timeout:200}).contains('Browser Windows').click()
+        alertHP.getleftoptionWindow().click()
         //Click en boton nueva página
         /*
         Cypress no esta diseñado para manejar child windows, por lo tanto todo se debe trabajar en la misma página
@@ -54,9 +61,7 @@ describe('ToolsQa Practice Alerts', function(){
         una página nueva y continue en la actual
         cy.get('id o clase del botón que abre la nueva pagina').invoke('removeAttr','target').click()
         */
-        cy.get('#windowButton').invoke('removeAttr','target').click()
-
-        
+        alertHP.openNewWindow().click()
     })
     /*it('Iframe interaction', function(){
         
