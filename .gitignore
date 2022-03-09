@@ -1,5 +1,5 @@
 node_modules
 .DS_store
 package-lock.json
-integration/UdemyVideos.js
-1-/getting-started/todo.spec.js
+cypress/integration/UdemyVideos.js
+cypress/integration/1-/getting-started/todo.spec.js
