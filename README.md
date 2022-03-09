@@ -6,6 +6,7 @@ In this repository you will keep on track the following files
 
 1-In this folder you will find the test cases related with the webpage toolsqa (https://demoqa.com/) that page was designed for manual testers starts practicing
 with Webelements for automation, WebElements - Alerts - Widgets and in future other functionalities should added there
+
 2-In Script section you will found 
 cy:op for open the cypress run console
 testWE: run in headless mode the cases related with WebElements
