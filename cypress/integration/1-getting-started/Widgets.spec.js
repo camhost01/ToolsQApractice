@@ -1,13 +1,20 @@
 /// <reference types="Cypress" /> 
 
+import WidgetHomePage from "./pageObj/WidgetHomePage"
 
+var widgtHP = new WidgetHomePage()
 //const { find } = require("cypress/types/lodash")
 
 describe('ToolsQa Practice WidgetsElements', function(){
     beforeEach(function(){
         cy.log("Before start test case")
+        cy.fixture('example').then(function(data)
+        {
+            this.data=data
+        })
         cy.visit('https://demoqa.com/widgets')
     })
+    /*
     it('Accordian Interaction', function(){
         //Select option from left panel
         cy.get('.text',{timeout:200}).contains('Accordian').click()
@@ -36,5 +43,19 @@ describe('ToolsQa Practice WidgetsElements', function(){
 
         })
         
+    })
+    */
+    it('DatePicker Interaction',function()
+    {
+        //Select Option from Left Panel
+        widgtHP.cllDatePickOption().click()
+        //Click on field for display the datepicker
+        widgtHP.displayDatePicker().click()
+        //Selecting Month
+        widgtHP.selectMonthDatePicker().select(this.data.DPMonth)
+        //Selecting Year
+        widgtHP.selectYearDatePicker().select(this.data.DPYear)
+        //Select Day
+        widgtHP.selectDayDatePicker().contains(this.data.DPDay).click()
     })
 })
