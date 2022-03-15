@@ -64,7 +64,8 @@ describe('ToolsQa Practice Alerts', function(){
     })
     it('Iframe interaction', function(){
         cy.get('span.text').contains('Frames').click()
-        cy.iframe('#frame1').find('#sampleHeading')
+        cy.iframe('#frame1')
+        .find('#sampleHeading')
         .contains('This is a sample page')
     })
     
