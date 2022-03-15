@@ -6,20 +6,19 @@ class AlertHomePage
     }
     getAlertbutton()
     {
-       return cy.get('#alertButton').click()  
-        
+       return cy.get('#alertButton')
     }
     getConfirmbutton()
     {
-        return cy.get('#confirmButton').click()
+        return cy.get('#confirmButton')
     }
     getleftoptionWindow()
     {
-        cy.get('.text',{timeout:200}).contains('Browser Windows')
+        return cy.get('.text',{timeout:200}).contains('Browser Windows')
     }
     openNewWindow()
     {
-        cy.get('#windowButton').invoke('removeAttr','target')
+        return cy.get('#windowButton')
     }
 }
 export default AlertHomePage
