@@ -10,7 +10,7 @@
     "testWDGET": "cypress run --browser chrome --spec 'cypress/integration/1-getting-started/Widgets.spec.js'"
   },
   "devDependencies": {
-    "cypress": "^9.5.1",
+    "cypress": "^9.5.2",
     "cypress-iframe": "^1.0.1",
     "iframe": "^1.0.0"
   }

@@ -20,5 +20,13 @@ class AlertHomePage
     {
         return cy.get('#windowButton')
     }
+    getIframe()
+    {
+        return cy.iframe('#frame1')
+    }
+    selectIframeOp()
+    {
+        return cy.get('span.text')
+    }
 }
 export default AlertHomePage

@@ -14,7 +14,7 @@ describe('ToolsQa Practice WidgetsElements', function(){
         })
         cy.visit('https://demoqa.com/widgets')
     })
-    /*
+    
     it('Accordian Interaction', function(){
         //Select option from left panel
         cy.get('.text',{timeout:200}).contains('Accordian').click()
@@ -44,7 +44,7 @@ describe('ToolsQa Practice WidgetsElements', function(){
         })
         
     })
-    */
+    
     it('DatePicker Interaction',function()
     {
         //Select Option from Left Panel
@@ -57,5 +57,25 @@ describe('ToolsQa Practice WidgetsElements', function(){
         widgtHP.selectYearDatePicker().select(this.data.DPYear)
         //Select Day
         widgtHP.selectDayDatePicker().contains(this.data.DPDay).click()
+    })
+    it('Slider Interaction', () =>
+    {
+        widgtHP.selectSliderOp().click()
+        widgtHP.getsliderOb().trigger('mousemove',0,10)
+        widgtHP.getsliderOb().trigger('mousemove','right')
+    })
+    it('ProgressBar Interaction', () =>
+    {
+        widgtHP.selectProgressBOp().click()
+        widgtHP.getStartProgressB().click()
+        widgtHP.getProgressBvalue()
+        widgtHP.getStartProgressB().click()
+    })
+    it('Tool Tips Interaction',()=>
+    {
+        widgtHP.selectToolTipOp().click()
+        widgtHP.getToolTipBt().trigger('mouseover')
+        widgtHP.getToolTiptext().trigger('mouseover')
+        widgtHP.getToolTiplink().trigger('mouseover')
     })
 })

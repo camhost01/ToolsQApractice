@@ -63,10 +63,11 @@ describe('ToolsQa Practice Alerts', function(){
         alertHP.openNewWindow().invoke('removeAttr','target')
     })
     it('Iframe interaction', function(){
-        cy.get('span.text').contains('Frames').click()
-        cy.iframe('#frame1')
+        alertHP.selectIframeOp().contains('Frames').click()
+        alertHP.getIframe()
         .find('#sampleHeading')
         .contains('This is a sample page')
     })
+    
     
 })
