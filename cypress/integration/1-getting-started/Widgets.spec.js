@@ -40,9 +40,7 @@ describe('ToolsQa Practice WidgetsElements', function(){
             {
                 $v1.trigger.click()
             }
-
-        })
-        
+        })   
     })
     
     it('DatePicker Interaction',function()
@@ -77,5 +75,6 @@ describe('ToolsQa Practice WidgetsElements', function(){
         widgtHP.getToolTipBt().trigger('mouseover')
         widgtHP.getToolTiptext().trigger('mouseover')
         widgtHP.getToolTiplink().trigger('mouseover')
+        
     })
 })
