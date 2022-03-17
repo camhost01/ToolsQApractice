@@ -68,6 +68,24 @@ describe('ToolsQa Practice Alerts', function(){
         .find('#sampleHeading')
         .contains('This is a sample page')
     })
+    /*
+    it('Iframe into other iframe',()=>
+    {
+        cy.visit('https://letcode.in/frame')
+        cy.get('#firstFr').then(($firstIframe)=> {
+            const $secondIframeReference = $firstIframe.contents().find("iframe.has-background-white");
+            
+            cy.wrap($secondIframeReference).as('secondIframeReference'); //Saving this as a reference so we can access it again using get command
+            
+            //Now we are accessing the second iframe
+            cy.get('@secondIframeReference').then(($secondIframe) => {
+          
+           const $elementYouWant = $secondIframe.contents().find("input[name='email']")
+          
+           cy.wrap($elementYouWant).type('Hola')
+            })
+          })
+    })*/
     
     
 })
